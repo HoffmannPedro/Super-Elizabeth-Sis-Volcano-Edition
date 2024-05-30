@@ -1,5 +1,6 @@
 package juego;
 
+import java.awt.Color;
 import java.awt.Image;
 
 import entorno.Entorno;
@@ -7,17 +8,17 @@ import entorno.Entorno;
 public class Bloque {
 	private Integer x;
 	private Integer y;
-	private Integer alto;
 	private Integer ancho;
+	private Integer alto;
 	private Image imagen;
 	private boolean rompible;
 	
-	public Bloque(int x, int y, int alto, int ancho, Image imagen, boolean rompible) {
+	public Bloque(int x, int y, int ancho, int alto, Image imagen, boolean rompible) {
 		this.x = x;
 		this.y = y;
-		this.alto = alto;
 		this.ancho = ancho;
-		this.imagen = imagen;
+		this.alto = alto;
+		this.imagen = null;
 		this.rompible = rompible;
 	}
 	
@@ -25,15 +26,9 @@ public class Bloque {
 	public void dibujar(Entorno entorno) {
 		if (imagen != null) {
 			entorno.dibujarImagen(imagen,x, y, 0, 0.5);
+		} else {
+			entorno.dibujarRectangulo(getX(), getY(), getAncho(), getAlto(), 0, Color.BLUE);
 		}
-	}
-	
-	public void romperBloque() {
-		this.x =null;
-		this.y =null;
-		this.alto =null;
-		this.ancho =null;
-		this.imagen =null;
 	}
 	
 	public int getX() {
